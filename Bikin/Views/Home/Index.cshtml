@@ -1,0 +1,214 @@
+﻿@model HomeVM
+<!-- main start -->
+<main>
+    <!-- bikin start -->
+    <section id="bikin">
+        <div class="container">
+            <div class="bikin text-center">
+                <div class="title m-5">
+                    <h2>Build Better Websites With Bikin</h2>
+                    <p>We are team of talented designers making websites with Bootstrap</p>
+                    <div class="btn">
+                        <a href="#">Get Started</a>
+                    </div>
+                </div>
+                <div class="img m-5">
+                    <img src="https://bootstrapmade.com/demo/templates/Bikin/assets/img/hero-img.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- bikin end -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-5">
+                    <div class="content">
+                        <h3>Voluptatem dignissimos provident quasi</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                        </p>
+                        <a href="#">About us <i class="fa-solid fa-angle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-7">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="box-item">
+                                <div class="icon">
+                                    <i class="fa-regular fa-file-lines"></i>
+                                </div>
+                                <span>Corporis voluptates sit</span>
+                                <p>
+                                    Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
+                                    aliquip
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="box-item">
+                                <div class="icon">
+                                    <i class="fa-regular fa-file-lines"></i>
+                                </div>
+                                <span>Corporis voluptates sit</span>
+                                <p>
+                                    Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
+                                    aliquip
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="box-item">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-file-lines"></i>
+                                    </div>
+                                    <span>Corporis voluptates sit</span>
+                                    <p>
+                                        Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
+                                        aliquip
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="box-item">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-file-lines"></i>
+                                    </div>
+                                    <span>Corporis voluptates sit</span>
+                                    <p>
+                                        Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
+                                        aliquip
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="brand">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Logos)
+                {
+                    <div class="col-6 col-sm-4 col-md-2 col-lg-2">
+                        <div class="img">
+                            <img src="~/assets/img/@item.Image" alt="">
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+    <section id="service">
+        <div class="container">
+            <div class="title text-center">
+                <h2>Services</h2>
+                <p>
+                    Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
+                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                </p>
+            </div>
+            <div class="row text-center">
+                @foreach (var item in Model.Services)
+	{
+                <div class="col-lg-3">
+                    <div class="cart-item">
+                        <div class="icon">
+                            <i class="@item.Icon"></i>
+                        </div>
+                        <h3>@item.Title</h3>
+                        <p>@item.Description</p>
+                    </div>
+                </div>
+	}
+              
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <div class="title text-center">
+                <h2>Contact</h2>
+                <p>
+                    Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                    sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
+                    ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="info text-center">
+                        <div class="location">
+                            <div class="icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <span>Our Address</span>
+                            <p>@layoutService.GetDatas().Result.Settings.FirstOrDefault(s=>s.Key.ToLower().Trim()=="location")?.Value</p>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <div class="letter">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-envelope"></i>
+                                    </div>
+                                    <span>Email Us</span>
+                                    <p>
+                                        @layoutService.GetDatas().Result.Settings.FirstOrDefault(s=>s.Key.ToLower().Trim()=="emailinfo")?.Value
+                                        <br>
+                                        @layoutService.GetDatas().Result.Settings.FirstOrDefault(s=>s.Key.ToLower().Trim()=="emailcontact")?.Value
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="call">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-phone-volume"></i>
+                                    </div>
+                                    <span>
+                                        Call Us
+                                    </span>
+                                    <p>
+                                        @layoutService.GetDatas().Result.Settings.FirstOrDefault(s=>s.Key.ToLower().Trim()=="call1")?.Value
+                                        <br>
+                                        @layoutService.GetDatas().Result.Settings.FirstOrDefault(s=>s.Key.ToLower().Trim()=="call2")?.Value
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form action="">
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input class="form-control" type="text" placeholder="Your Name">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input class="form-control" type="text" placeholder="Your Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <input class="form-control" type="text" placeholder="Subject">
+                        </div>
+                        <div>
+                            <textarea class="form-control" name="" id="" cols="30" rows="5"
+                                      placeholder="Message"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- main end -->

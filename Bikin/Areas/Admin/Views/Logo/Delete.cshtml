@@ -1,0 +1,14 @@
+﻿@model Logo
+<div>
+    <div>
+        <p>Id:</p>
+        <p>@Model.Id</p>
+    </div>
+    <div>
+        <p>Image:</p>
+        <img src="~/assets/img/@Model.Image" />
+    </div>
+    <form method="post">
+        <button class="btn btn-lg btn-danger" type="submit">delete</button>
+    </form>
+</div>

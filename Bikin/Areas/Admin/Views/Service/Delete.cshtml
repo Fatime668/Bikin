@@ -1,0 +1,22 @@
+﻿@model Service
+<div>
+    <div>
+        <p>Id:</p>
+        <p>@Model.Id</p>
+    </div>
+    <div>
+        <p>Icon:</p>
+        <i class="@Model.Icon"></i>
+    </div>
+    <div>
+        <p>Title:</p>
+        <p>@Model.Title</p>
+    </div>
+    <div>
+        <p>Description:</p>
+        <p>@Model.Description</p>
+    </div>
+    <form method="post">
+        <button type="submit" class="btn btn-lg btn-outline-danger">Delete</button>
+    </form>
+</div>

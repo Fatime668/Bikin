@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;300&family=Krub:wght@300;400&family=Lobster&family=Montserrat:ital,wght@0,200;0,300;0,500;1,200;1,300;1,400&family=Nunito+Sans:wght@300;400&family=Oleo+Script:wght@400;700&family=Poppins:wght@200;300;400&family=Roboto:wght@300;400&family=Source+Sans+Pro:wght@200;300;400&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/scss/css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="menu">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-6 col-sm-2 col-md-2 col-lg-2">
+                            <div class="nav-logo">
+                                <h1><a href="#">@layoutService.GetDatas().Result.Settings.FirstOrDefault(s => s.Key.ToLower().Trim()=="headerlogo")?.Value</a></h1>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-10 col-md-10 col-lg-10">
+                            <div class="nav-menu">
+                                <ul class="list-unstyled d-flex justify-content-end  align-items-center m-0 p-0">
+                                    <li><a class="active" href="#">Home</a></li>
+                                    <li class="ms-4"><a href="#">About</a></li>
+                                    <li class="ms-4"><a href="#">Services</a></li>
+                                    <li class="ms-4"><a href="#">Portfolio</a></li>
+                                    <li class="ms-4"><a href="#">Team</a></li>
+                                    <li class="ms-4"><a href="#">Pricing</a></li>
+                                    <li class="ms-4 dropdown">
+                                        <a href="#">
+                                            Drop Down <i class="fa-solid fa-angle-down"></i>
+                                        </a>
+                                        <ul class="list-unstyled downmenu m-0 p-0">
+                                            <li><a href="#">Drop Down 1</a></li>
+                                            <li><a href="#">Drop Down 2</a></li>
+                                            <li class="dripdown">
+                                                <a href="#">
+                                                    Deep Drop Down<i class="fa-solid fa-angle-right"></i>
+                                                </a>
+                                                <ul class="list-unstyled m-0 p-0 dripmenu">
+                                                    <li><a href="#">Deep Drop Menu 1</a></li>
+                                                    <li><a href="#">Deep Drop Menu 2</a></li>
+                                                    <li><a href="#">Deep Drop Menu 3</a></li>
+                                                    <li><a href="#">Deep Drop Menu 4</a></li>
+                                                    <li><a href="#">Deep Drop Menu 5</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Drop Down 4</a></li>
+                                            <li><a href="#">Drop Down 5</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="ms-4 dropmenu">
+                                        <a href="#"><i class="fa-solid fa-user"></i></a>
+                                        <ul class="list-unstyled m-0 p-0 downmenu">
+                                            @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                                            {
+                                                <li><a asp-controller="account" asp-action="edit">@User.Identity.Name</a></li>
+
+
+                                                <li><a asp-controller="account" asp-action="logout">Logout</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a asp-controller="account" asp-action="register">Register</a></li>
+                                                <li><a asp-controller="account" asp-action="login">Login</a></li>
+                                            }
+
+                                        </ul>
+                                    </li>
+                                    <li class="ms-4"><a class="btn" href="#">Get Started</a></li>
+                                </ul>
+                                <div class="d-flex justify-content-end align-items-center bar">
+                                    <a href="#"><i class="fa-solid fa-bars"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar">
+                <div class="close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <ul class="list-unstyled">
+
+                    <li><a class="active" href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a class="btn" href="#">Get Started</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- header end -->
+    @RenderBody()
+    <footer>
+        <div class="top-footer" style="padding-top:150px;padding-bottom:50px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                        <div class="bikin">
+                            <h3>Bikin</h3>
+                            <p>
+                                @layoutService.GetDatas().Result.Settings.FirstOrDefault(s=>s.Key.ToLower().Trim()=="loaction")?.Value
+                                <br>
+                                New York, NY 535022
+                                <br>
+                                United States
+                            </p>
+                            <ul class="list-unstyled">
+                                <li><strong>Phone:</strong>@layoutService.GetDatas().Result.Settings.FirstOrDefault(s=>s.Key.ToLower().Trim()=="call1")?.Value</li>
+                                <li><strong>Email:</strong>@layoutService.GetDatas().Result.Settings.FirstOrDefault(s=>s.Key.ToLower().Trim()=="call1")?.Value</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                        <div class="useful">
+                            <h3>Useful Links</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Home</a></li>
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>About us</a></li>
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Services</a></li>
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Terms of service</a></li>
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Privacy policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-2">
+                        <div class="service">
+                            <h3>Our Services</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Web Design</a></li>
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Web Development</a></li>
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Product Managment</a></li>
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Marketing</a></li>
+                                <li><a href="#"><i class="fa-solid fa-chevron-right"></i>Graphic Design</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-5 justify-content-end">
+                        <div class="join">
+                            <h3>Join Our Newsletter</h3>
+                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                            <form action="">
+                                <input style="width:50% ;" class="email" type="email">
+                                <button type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                        <p>
+                            © Copyright <strong> Bikin.</strong> All Rights Reserved
+                            Designed by <a href="#">BootstrapMade</a>
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                        <ul class="list-unstyled d-flex justify-content-end m-0 p-0">
+                            <li><a href="#"><i class="@layoutService.GetDatas().Result.SocialMedias.FirstOrDefault(s=>s.Key.ToLower().Trim()=="twitter")?.Value"></i></a></li>
+                            <li class="ms-2"><a href="#"><i class="@layoutService.GetDatas().Result.SocialMedias.FirstOrDefault(s=>s.Key.ToLower().Trim()=="facebook")?.Value"></i></a></li>
+                            <li class="ms-2"><a href="#"><i class="@layoutService.GetDatas().Result.SocialMedias.FirstOrDefault(s=>s.Key.ToLower().Trim()=="instagram")?.Value"></i></a></li>
+                            <li class="ms-2"><a href="#"><i class="@layoutService.GetDatas().Result.SocialMedias.FirstOrDefault(s=>s.Key.ToLower().Trim()=="skype")?.Value"></i></a></li>
+                            <li class="ms-2"><a href="#"><i class="@layoutService.GetDatas().Result.SocialMedias.FirstOrDefault(s=>s.Key.ToLower().Trim()=="linkedin")?.Value"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+
+
+    <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/bootstrap/js/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/script.js"></script>
+</body>
+
+</html>
